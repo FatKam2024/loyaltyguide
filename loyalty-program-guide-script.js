@@ -24,19 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
 			</div>
 
             <div class="interactive-diagram">
-                <h3>CRM Ecosystem</h3>
-                <svg width="300" height="200" viewBox="0 0 300 200">
-                    <circle cx="150" cy="100" r="80" fill="#3498db" class="diagram-element" data-info="core-crm"/>
-                    <text x="150" y="105" text-anchor="middle" fill="white">Core CRM</text>
-                    <circle cx="50" cy="50" r="30" fill="#e74c3c" class="diagram-element" data-info="sales"/>
-                    <text x="50" y="55" text-anchor="middle" fill="white">Sales</text>
-                    <circle cx="250" cy="50" r="30" fill="#2ecc71" class="diagram-element" data-info="marketing"/>
-                    <text x="250" y="55" text-anchor="middle" fill="white">Marketing</text>
-                    <circle cx="50" cy="150" r="30" fill="#f39c12" class="diagram-element" data-info="service"/>
-                    <text x="50" y="155" text-anchor="middle" fill="white">Service</text>
-                    <circle cx="250" cy="150" r="30" fill="#9b59b6" class="diagram-element" data-info="analytics"/>
-                    <text x="250" y="155" text-anchor="middle" fill="white">Analytics</text>
-                </svg>
+                <h3>Loyalty Program Ecosystem</h3>
+				<svg width="300" height="200" viewBox="0 0 300 200">
+					<circle cx="150" cy="100" r="80" fill="#3498db" class="diagram-element" data-info="core-loyalty"/>
+					<text x="150" y="105" text-anchor="middle" fill="white">Core Loyalty</text>
+					<circle cx="50" cy="50" r="30" fill="#e74c3c" class="diagram-element" data-info="rewards"/>
+					<text x="50" y="55" text-anchor="middle" fill="white">Rewards</text>
+					<circle cx="250" cy="50" r="30" fill="#2ecc71" class="diagram-element" data-info="engagement"/>
+					<text x="250" y="55" text-anchor="middle" fill="white">Engagement</text>
+					<circle cx="50" cy="150" r="30" fill="#f39c12" class="diagram-element" data-info="analytics"/>
+					<text x="50" y="155" text-anchor="middle" fill="white">Analytics</text>
+					<circle cx="250" cy="150" r="30" fill="#9b59b6" class="diagram-element" data-info="partners"/>
+					<text x="250" y="155" text-anchor="middle" fill="white">Partners</text>
+				</svg>
                 <div id="diagramInfo" class="diagram-info"></div>
             </div>
         `;
