@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function showInitialContent() {
 		const contentArea = document.getElementById('contentArea');
 		contentArea.innerHTML = `
+			<div class="breadcrumb">
+				<span id="currentTopic">Home</span>
+			</div>
 			<h1>Comprehensive Loyalty Program Training Guide</h1>
 			<p>Welcome to our comprehensive guide on Customer Loyalty Programs. Please select a category or topic from the sidebar to view its details.</p>
             <p>Hover over <span class="tooltip">highlighted terms<span class="tooltiptext">Terms with additional information</span></span> for quick definitions.</p>
@@ -43,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         attachQuizListener();
         attachDiagramListeners();
+		attachBreadcrumbListeners();
     }
 
     function createTopicList() {
@@ -81,21 +85,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showCategoryDetails(category) {
-        const contentArea = document.getElementById('contentArea');
-        const categoryInfo = loyaltyProgramGuide[category];
-        contentArea.innerHTML = `
+		const contentArea = document.getElementById('contentArea');
+		const categoryInfo = loyaltyProgramGuide[category];
+		contentArea.innerHTML = `
 			<div class="breadcrumb">
-				<a href="#" onclick="handleBreadcrumbClick(event)">Home</a> &gt; <span id="currentTopic">${category}</span>
+				<a href="#" data-action="home">Home</a> &gt; <span id="currentTopic">${category}</span>
 			</div>
-            <h2>${category}</h2>
-            <p>${categoryInfo.description.english}</p>
-            <p class="chinese">${categoryInfo.description.chinese}</p>
-            <h3>Topics in this category:</h3>
-            <ul>
-                ${Object.keys(categoryInfo.topics).map(topic => `<li>${topic}</li>`).join('')}
-            </ul>
-        `;
-    }
+			<h2>${category}</h2>
+			<p>${categoryInfo.description.english}</p>
+			<p class="chinese">${categoryInfo.description.chinese}</p>
+			<h3>Topics in this category:</h3>
+			<ul>
+				${Object.keys(categoryInfo.topics).map(topic => `<li>${topic}</li>`).join('')}
+			</ul>
+		`;
+		attachBreadcrumbListeners();
+	}
 
     function showTopicDetails(category, topic) {
         const contentArea = document.getElementById('contentArea');
@@ -140,11 +145,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 	
     function attachBreadcrumbListeners() {
-        const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
-        breadcrumbLinks.forEach(link => {
-            link.addEventListener('click', handleBreadcrumbClick);
-        });
-    }
+		const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+		breadcrumbLinks.forEach(link => {
+			link.removeEventListener('click', handleBreadcrumbClick);
+			link.addEventListener('click', handleBreadcrumbClick);
+		});
+	}
 
     function handleBreadcrumbClick(event) {
 		event.preventDefault();
