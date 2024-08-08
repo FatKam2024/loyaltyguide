@@ -84,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const contentArea = document.getElementById('contentArea');
         const categoryInfo = loyaltyProgramGuide[category];
         contentArea.innerHTML = `
-            <div class="breadcrumb">
-                <a href="#">Home</a> &gt; <span id="currentTopic">${category}</span>
-            </div>
+			<div class="breadcrumb">
+				<a href="#" onclick="handleBreadcrumbClick(event)">Home</a> &gt; <span id="currentTopic">${category}</span>
+			</div>
             <h2>${category}</h2>
             <p>${categoryInfo.description.english}</p>
             <p class="chinese">${categoryInfo.description.chinese}</p>
@@ -147,15 +147,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleBreadcrumbClick(event) {
-        event.preventDefault();
-        const action = event.target.dataset.action;
-        if (action === 'home') {
-            showInitialContent();
-        } else if (action === 'category') {
-            const category = event.target.dataset.category;
-            showCategoryDetails(category);
-        }
-    }
+		event.preventDefault();
+		const action = event.target.dataset.action;
+		if (action === 'home' || event.target.textContent.trim() === 'Home') {
+			showInitialContent();
+		} else if (action === 'category') {
+			const category = event.target.dataset.category;
+			showCategoryDetails(category);
+		}
+	}
 	
     function updateProgress() {
         const progress = (completedTopics / totalTopics) * 100;
